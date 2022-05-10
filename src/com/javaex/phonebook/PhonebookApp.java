@@ -1,9 +1,12 @@
 package com.javaex.phonebook;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -26,7 +29,7 @@ public class PhonebookApp {
 		// 1.리스트
 		List<Phonebook> personList = new ArrayList<Phonebook>();
 
-		Reader fr = new FileReader("./PhoneDB.txt");
+		Reader fr = new FileReader(".\\PhoneDB.txt");
 		BufferedReader br = new BufferedReader(fr);
 
 		if (num == 1) {
@@ -48,7 +51,7 @@ public class PhonebookApp {
 			}
 		} else if (num == 2) {
 			System.out.println("<2.등록>");
-			while(true) {
+			while (true) {
 				Phonebook person = new Phonebook();
 				String str = br.readLine();
 				if (str == null) {
@@ -59,26 +62,38 @@ public class PhonebookApp {
 				person.setHp(personInfo[1]);
 				person.setCompany(personInfo[2]);
 				personList.add(person);
-				
-				sc.nextLine();
-				System.out.print(">이름: ");
-				person.setName(sc.nextInt());
-				System.out.print(">휴대전화: ");
-				person.setHp(sc.nextInt());
-				System.out.print(">회사전화: ");
-				person.setCompany(sc.nextInt());
+			}
+			Phonebook person = new Phonebook();
+			sc.nextLine();
+			System.out.print(">이름: ");
+			person.setName(sc.nextLine());
+			System.out.print(">휴대전화: ");
+			person.setHp(sc.nextLine());
+			System.out.print(">회사전화: ");
+			person.setCompany(sc.nextLine());
+			personList.add(person);
+
+			Writer fw = new FileWriter(".\\PhoneDB.txt");
+			BufferedWriter bw = new BufferedWriter(fw);
+
+			for (Phonebook pe : personList) {
+				String saveStr = person.getName() + "," + person.getHp() + "," + person.getCompany();
+				System.out.println(saveStr);
+
+				bw.write(saveStr);
+				bw.newLine();
 				break;
 			}
-			
+
 		} else if (num == 3) {
 			System.out.println("<3.삭제>");
-			
+
 		} else if (num == 4) {
 			System.out.println("<4.검색>");
-			
+
 		} else if (num == 5) {
 			System.out.println("<5.종료>");
-			
+
 		} else {
 			System.out.println("[다시 입력해 주세요]");
 		}

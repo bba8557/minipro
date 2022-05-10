@@ -46,17 +46,5 @@ public class Phonebook {
 	public void showInfo() {
 		System.out.println(this.name+ "   " + this.hp + "   " + this.company);
 	}
-	public void setName(int nextInt) {
-		// TODO Auto-generated method stub
-		
-	}
-	public void setCompany(int nextInt) {
-		// TODO Auto-generated method stub
-		
-	}
-	public void setHp(int nextInt) {
-		// TODO Auto-generated method stub
-		
-	}
 		
 }
