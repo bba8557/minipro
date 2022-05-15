@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class PhonebookApp {
 
 	public static void main(String[] args) throws IOException {
@@ -71,6 +72,8 @@ public class PhonebookApp {
 			person.setHp(sc.nextLine());
 			System.out.print(">회사전화: ");
 			person.setCompany(sc.nextLine());
+			
+			
 			personList.add(person);
 
 			Writer fw = new FileWriter(".\\PhoneDB.txt");
@@ -78,11 +81,8 @@ public class PhonebookApp {
 
 			for (Phonebook pe : personList) {
 				String saveStr = person.getName() + "," + person.getHp() + "," + person.getCompany();
-				System.out.println(saveStr);
-
 				bw.write(saveStr);
 				bw.newLine();
-				break;
 			}
 
 		} else if (num == 3) {
